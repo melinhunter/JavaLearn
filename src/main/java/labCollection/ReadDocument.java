@@ -2,6 +2,7 @@ package labCollection;
 
 import java.io.FileInputStream;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class ReadDocument {
 
@@ -11,13 +12,17 @@ public class ReadDocument {
         String fileName = "P:\\My Documents\\小說\\《吞噬星空》（校对版全本）作者：我吃西红柿.txt";
         int lineNumber = 40000;
         long t0 = System.currentTimeMillis();
+        long t2 = System.nanoTime();
         Collection<String> strings = new LinkedList<>();
         //Collection<String> strings = new ArrayList<>();
 
         strings = r.findDocument(fileName, lineNumber, strings);
         output(strings);
         long t1 = System.currentTimeMillis();
+        long t3 = System.nanoTime();
         System.out.println(t1-t0);
+        long used = t3-t2;
+        System.out.println("used:"+ TimeUnit.NANOSECONDS.toMillis(used)+" ms");
         viewMemory();
 
     }
